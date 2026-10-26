@@ -18,11 +18,10 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Android SDK o'rnatish
-        uses: android-actions/setup-android@v3
-
-      - name: Litsenziyalarni qabul qilish
-        run: yes | sdkmanager --licenses || true
+      # ubuntu-latest kompyuterida Android SDK va litsenziyalar allaqachon
+      # oldindan o'rnatilgan/qabul qilingan bo'ladi — qayta yuklab olish shart emas.
+      - name: Android SDK borligini tekshirish
+        run: echo "ANDROID_HOME=$ANDROID_HOME" && ls "$ANDROID_HOME"
 
       - name: Gradle o'rnatish
         uses: gradle/actions/setup-gradle@v3
